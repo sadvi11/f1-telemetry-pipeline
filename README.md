@@ -77,6 +77,17 @@ Simulates F1 car telemetry data from the Canadian Grand Prix at Circuit Gilles V
 
 ---
 
+
+## Simulation vs Reality — Canadian GP 2026
+
+| Position | My Simulation | Real Race |
+|---|---|---|
+| P1 | Oscar Piastri (McLaren) | Kimi Antonelli (Mercedes) |
+| P2 | Lewis Hamilton (Ferrari) | Lewis Hamilton (Ferrari) ✅ |
+| P3 | Lando Norris (McLaren) | Max Verstappen (Red Bull) |
+
+Hamilton appeared on both podiums. The simulation uses randomised tyre degradation and lap time variance — not a prediction model. A SageMaker ML model trained on real race data would improve accuracy significantly.
+
 ## Nokia 5G → AWS Real-Time Pipeline Mapping
 
 | Nokia 5G Experience | AWS F1 Pipeline | Purpose |
