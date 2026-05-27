@@ -36,7 +36,7 @@ Simulates F1 car telemetry data from the Canadian Grand Prix at Circuit Gilles V
     AWS SQS — f1-telemetry-queue
     (same pattern as real F1 + AWS)
            ↓
-    02_consumer/lambda_consumer.py
+    02_consumer/sqs_consumer.py
     Processes events, stores to DynamoDB
            ↓
     AWS DynamoDB — f1-race-telemetry
@@ -75,7 +75,7 @@ Simulates F1 car telemetry data from the Canadian Grand Prix at Circuit Gilles V
 | Nokia 5G Experience | AWS F1 Pipeline | Purpose |
 |---|---|---|
 | 100K+ subscriber event streams | SQS message queue (100+ events/sec) | High-volume event ingestion |
-| CBAM VNF lifecycle events | Lambda consumer processing | Event-driven compute |
+| CBAM VNF lifecycle events | SQS consumer processing | Event-driven compute |
 | Nokia CBIS OpenStack storage | DynamoDB NoSQL storage | Persistent event store |
 | Nokia OAM monitoring dashboards | CloudWatch custom metrics | Real-time operational visibility |
 | ITIL incident response | CloudWatch alarms | Automated alerting |
@@ -131,7 +131,7 @@ cp .env.example .env
 # Run pipeline in order
 python3 03_storage/dynamodb_setup.py    # Step 1: create table
 python3 01_producer/race_producer.py    # Step 2: stream race data
-python3 02_consumer/lambda_consumer.py  # Step 3: process into DynamoDB
+python3 02_consumer/sqs_consumer.py  # Step 3: process into DynamoDB
 python3 04_dashboard/cloudwatch_dashboard.py  # Step 4: live dashboard
 
 # Verify analytics
@@ -177,7 +177,7 @@ f1-telemetry-pipeline/
 ├── 01_producer/
 │   └── race_producer.py      ← generates F1 telemetry → SQS
 ├── 02_consumer/
-│   └── lambda_consumer.py    ← SQS → DynamoDB processor
+│   └── sqs_consumer.py    ← SQS → DynamoDB processor
 ├── 03_storage/
 │   └── dynamodb_setup.py     ← table setup + race analytics
 ├── 04_dashboard/
