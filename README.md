@@ -8,6 +8,7 @@
 
 > Real-time F1 race telemetry pipeline inspired by watching the Canadian Grand Prix live in Montreal. Simulates 20 cars × 5 laps of race data streaming through AWS SQS → Lambda → DynamoDB → CloudWatch — the same event-driven architecture AWS uses for real Formula 1 races.
 
+[![Tests](https://github.com/sadvi11/f1-telemetry-pipeline/actions/workflows/test.yml/badge.svg)](https://github.com/sadvi11/f1-telemetry-pipeline/actions/workflows/test.yml)
 [![Python](https://img.shields.io/badge/Python-3.11-3776AB?logo=python)](https://python.org)
 [![AWS SQS](https://img.shields.io/badge/AWS_SQS-Real--time_Queue-FF9900?logo=amazon-aws)](https://aws.amazon.com/sqs)
 [![DynamoDB](https://img.shields.io/badge/DynamoDB-NoSQL-FF9900?logo=amazon-aws)](https://aws.amazon.com/dynamodb)
