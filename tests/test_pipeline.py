@@ -6,14 +6,16 @@ sys.path.insert(0, str(Path(__file__).parent.parent))
 
 def test_config_defaults():
     import config
-    assert config.KINESIS_STREAM_NAME == "f1-telemetry-stream"
+    assert config.SQS_QUEUE_NAME == "f1-telemetry-queue"
     assert config.DYNAMO_TABLE_NAME == "f1-race-telemetry"
     assert config.CARS_ON_TRACK == 20
     assert config.TOTAL_LAPS == 70
 
 
 def test_race_produces_20_drivers():
-    from config import DRIVERS
+    import sys
+    sys.path.insert(0, '01_producer')
+    from race_producer import DRIVERS
     assert len(DRIVERS) == 20
 
 
